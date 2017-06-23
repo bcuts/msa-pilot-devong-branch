@@ -2,7 +2,7 @@
 
 **데봉이치킨 branch 서비스**
 
-**spring boot**
+**spring boot quick start**
 
 ```bash
 gradlew build bootRun
