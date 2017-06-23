@@ -1,7 +1,8 @@
-# msa-pilot-devong-branch
+# 데봉이치킨 - branch 컴포넌트
 
-데봉이 치킨 지점 관리 서비스!!
+**데봉이치킨 branch 서비스**
+spring boot기반 서비스
 
-서비스실행
-
-> gradlew build bootRun
+```bash
+gradlew build bootRun
+```
