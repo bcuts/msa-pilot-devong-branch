@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 class BranchController {
     @Autowired
-    @Qualifier("mockBranchService")
+    @Qualifier("branchService")
     BranchService branchService;
 
     @GetMapping("/branches")
@@ -25,7 +25,7 @@ class BranchController {
     }
 
     @PutMapping(value="/branch/{branchId}")
-    public int putBranch(@PathVariable String branchId){
+    public Branch putBranch(@PathVariable String branchId){
         return branchService.putBranch(branchId);
     }
 }

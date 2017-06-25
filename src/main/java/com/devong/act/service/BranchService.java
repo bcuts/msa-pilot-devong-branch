@@ -11,5 +11,5 @@ public interface BranchService {
 
     public Branch getBranch(String id);
 
-    public int putBranch(String branchId);
+    public Branch putBranch(String branchId);
 }

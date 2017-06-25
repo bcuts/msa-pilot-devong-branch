@@ -1,4 +1,6 @@
-package com.devong.act.model;
+package com.devong.act.repository;
+
+import com.devong.act.model.Branch;
 
 import java.util.*;
 
@@ -29,10 +31,11 @@ public class MockData {
         return branchList.get(id);
     }
 
-    public static int putBranch(String branchId) {
+    public static Branch putBranch(String branchId) {
         branchIds.add(branchId);
-        branchList.put(branchId, new Branch(branchId));
-        return 0;
+        Branch branch = new Branch(branchId);
+        branchList.put(branchId, branch);
+        return branch;
     }
 
     public static List<String> getProducts(String branchId) {

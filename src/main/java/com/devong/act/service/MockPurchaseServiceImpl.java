@@ -1,6 +1,6 @@
 package com.devong.act.service;
 
-import com.devong.act.model.MockData;
+import com.devong.act.repository.MockData;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

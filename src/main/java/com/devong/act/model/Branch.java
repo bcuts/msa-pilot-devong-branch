@@ -1,13 +1,26 @@
 package com.devong.act.model;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Branch {
     //국가코드 2자리, number 4자리
+    @Id
     private String id;
+
+    @ElementCollection(targetClass = String.class)
     private List<String> products;
+
+    @ElementCollection(targetClass = String.class)
     private List<String> purchases;
+
+    public Branch(){
+
+    }
 
     public Branch(String id) {
         this.id = id;
