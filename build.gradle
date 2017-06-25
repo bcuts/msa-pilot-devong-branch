@@ -25,6 +25,21 @@ springBoot {
 	mainClass = "com.devong.act.DevongBranchApplication"
 }
 
+jar {
+	manifest {
+		attributes  'Title': 'devong-branch', 'Version': version, 'Main-Class': 'DevongBranchApplication'
+	}
+	archiveName 'devong-branch.jar'
+	dependsOn configurations.runtime
+	from {
+		configurations.compile.collect {it.isDirectory()? it: zipTree(it)}
+	}
+}
+
+task stage(dependsOn: ['build', 'jar']){
+
+}
+
 dependencies {
 	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.0')
 	compile('org.springframework.boot:spring-boot-starter-web')
