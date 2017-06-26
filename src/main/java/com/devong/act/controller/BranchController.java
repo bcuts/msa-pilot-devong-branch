@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController
 class BranchController {
     @Autowired
-    @Qualifier("mockBranchService")
+    @Qualifier("branchService")
     BranchService branchService;
 
     @GetMapping("/branches")
@@ -20,12 +21,12 @@ class BranchController {
     }
 
     @GetMapping(value="/branch/{branchId}")
-    public @ResponseBody Branch getBranch(@PathVariable String branchId){
+    public @ResponseBody Branch getBranch(@PathVariable String branchId) throws Exception {
         return branchService.getBranch(branchId);
     }
 
     @PutMapping(value="/branch/{branchId}")
-    public int putBranch(@PathVariable String branchId){
+    public Branch putBranch(@PathVariable String branchId) throws Exception {
         return branchService.putBranch(branchId);
     }
 }

@@ -9,7 +9,7 @@ public interface BranchService {
     public List<Branch> getBranches();
     public List<String> getBranchIds();
 
-    public Branch getBranch(String id);
+    public Branch getBranch(String id) throws Exception ;
 
-    public int putBranch(String branchId);
+    public Branch putBranch(String branchId) throws Exception;
 }

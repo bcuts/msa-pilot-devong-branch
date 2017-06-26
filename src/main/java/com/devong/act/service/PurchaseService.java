@@ -1,11 +1,13 @@
 package com.devong.act.service;
 
+import com.devong.act.model.Purchase;
+
 import java.util.List;
 
 public interface PurchaseService {
     List<String> getPurchases(String branchId);
 
-    int putPurchase(String branchId, String purchaseId);
+    Purchase putPurchase(String branchId, String purchaseId);
 
-    int deletePurchase(String branchId, String purchaseId);
+    void deletePurchase(String branchId, String purchaseId);
 }

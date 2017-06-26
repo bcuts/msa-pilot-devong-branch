@@ -1,5 +1,6 @@
 package com.devong.act.controller;
 
+import com.devong.act.model.Product;
 import com.devong.act.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,7 +11,7 @@ import java.util.List;
 @RestController
 public class ProductController {
     @Autowired
-    @Qualifier("mockProductService")
+    @Qualifier("productService")
     ProductService productService;
 
     @GetMapping("/branch/{branchId}/products")
@@ -19,13 +20,13 @@ public class ProductController {
     }
 
     @PutMapping("/branch/{branchId}/product/{productId}")
-    public int putProduct(@PathVariable String branchId, @PathVariable String productId){
+    public Product putProduct(@PathVariable String branchId, @PathVariable String productId) throws Exception{
         return productService.putProduct(branchId, productId);
     }
 
     @DeleteMapping("/branch/{branchId}/product/{productId}")
-    public int deleteProduct(@PathVariable String branchId, @PathVariable String productId){
-        return productService.deleteProduct(branchId, productId);
+    public void deleteProduct(@PathVariable String branchId, @PathVariable String productId) throws Exception{
+        productService.deleteProduct(branchId, productId);
     }
 
 }
