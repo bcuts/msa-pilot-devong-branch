@@ -1,30 +1,55 @@
 package com.devong.act.service;
 
+import com.devong.act.common.CommonConstants;
+import com.devong.act.model.Product;
+import com.devong.act.repository.BranchRepository;
 import com.devong.act.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-@Service
+@Service("productService")
 public class ProductServiceImpl implements ProductService {
+
+    @Autowired
+    BranchRepository branchDao;
 
     @Autowired
     ProductRepository productDao;
 
     @Override
     public List<String> getProducts(String branchId) {
-
-        return null;
+        if(branchDao.exists(branchId)) {
+            return productDao.getAllProductsInBranch(branchId);
+        }else{
+            throw new EntityNotFoundException(CommonConstants.EXCEPTION_NOT_EXIST_BRANCH);
+        }
     }
 
     @Override
-    public int putProduct(String branchId, String productId) {
-        return 0;
+    public Product putProduct(String branchId, String productId) throws Exception {
+        if(branchDao.exists(branchId)) {
+            if (productDao.countProductInBranch(branchId, productId) == 0) {
+                Product product = new Product();
+                product.setBranchId(branchId);
+                product.setProductId(productId);
+                return productDao.save(product);
+            } else {
+                throw new EntityExistsException(CommonConstants.EXCEPTION_CONFLICT_PRODUCT);
+            }
+        }else {
+            throw new EntityNotFoundException(CommonConstants.EXCEPTION_NOT_EXIST_BRANCH);
+        }
     }
 
     @Override
-    public int deleteProduct(String branchId, String productId) {
-        return 0;
+    public void deleteProduct(String branchId, String productId) {
+        Product product = new Product();
+        product.setBranchId(branchId);
+        product.setProductId(productId);
+        productDao.delete(productId);
     }
 }

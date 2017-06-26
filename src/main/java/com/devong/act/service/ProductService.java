@@ -1,11 +1,13 @@
 package com.devong.act.service;
 
+import com.devong.act.model.Product;
+
 import java.util.List;
 
 public interface ProductService {
     List<String> getProducts(String branchId);
 
-    int putProduct(String branchId, String productId);
+    Product putProduct(String branchId, String productId) throws Exception;
 
-    int deleteProduct(String branchId, String productId);
+    void deleteProduct(String branchId, String productId);
 }

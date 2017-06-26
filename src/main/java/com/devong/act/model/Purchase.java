@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Product {
+public class Purchase {
     @Id
     private int id;
 
@@ -16,7 +16,7 @@ public class Product {
     private String branchId;
 
     @Column
-    private String productId;
+    private String purchaseId;
 
     public int getId() {
         return id;
@@ -34,11 +34,11 @@ public class Product {
         this.branchId = branchId;
     }
 
-    public String getProductId() {
-        return productId;
+    public String getPurchaseId() {
+        return purchaseId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setPurchaseId(String purchaseId) {
+        this.purchaseId = purchaseId;
     }
 }
